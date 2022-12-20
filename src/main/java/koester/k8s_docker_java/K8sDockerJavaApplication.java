@@ -1,20 +1,13 @@
 package koester.k8s_docker_java;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-@SpringBootApplication
 public class K8sDockerJavaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(K8sDockerJavaApplication.class, args);
-        TuermeVonHanoi();
+        tuermeVonHanoi();
     }
 
-    public static void TuermeVonHanoi() {
+    public static void tuermeVonHanoi() {
 //        try (FileWriter fileWriter = new FileWriter("/test-pd/" + System.getenv("HOSTNAME"))) {
         for (int i = 1; i < 64; i++) {
             long start = System.currentTimeMillis();
