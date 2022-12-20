@@ -1,6 +1,9 @@
 package koester.k8s_docker_java;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class K8sDockerJavaApplication {
 
     public static void main(String[] args) {
@@ -8,7 +11,7 @@ public class K8sDockerJavaApplication {
     }
 
     public static void tuermeVonHanoi() {
-//        try (FileWriter fileWriter = new FileWriter("/test-pd/" + System.getenv("HOSTNAME"))) {
+        try (FileWriter fileWriter = new FileWriter("/test-pd/" + System.getenv("HOSTNAME"))) {
         for (int i = 1; i < 64; i++) {
             long start = System.currentTimeMillis();
             int hoehe = i;
@@ -17,11 +20,11 @@ public class K8sDockerJavaApplication {
             long time = end - start;
             String s = "Time: fuer hoehe = " + i + " Time = " + time + "\n";
             System.out.println(s);
-//                fileWriter.write(s);
-//                fileWriter.flush();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
+                fileWriter.write(s);
+                fileWriter.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
