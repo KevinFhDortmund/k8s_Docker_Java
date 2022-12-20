@@ -1,5 +1,6 @@
 version: '3'
 services:
+  #kennt tuerme von Hanoi nicht
   tuerme-von-hanoi:
     build: ../src/main/java/koester/k8s_docker_java
     ports:
