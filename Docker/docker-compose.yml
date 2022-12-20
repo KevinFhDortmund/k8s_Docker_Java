@@ -1,0 +1,6 @@
+version: '3'
+services:
+  tuerme-von-hanoi:
+    build: ../src/main/java/koester/k8s_docker_java
+    ports:
+      - "8080:8080"
