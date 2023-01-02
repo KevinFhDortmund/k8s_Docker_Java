@@ -20,23 +20,24 @@
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.38.1</version>
-                <configuration>
-                    <images>
-                        <image>
-<!--                            <name>${project.artifactId}:${project.version}</name>-->
-                            <name>java:local</name>
-                            <build>
-                                <from>openjdk:17-jdk-alpine</from>
-                                <assembly>
-                                    <descriptorRef>artifact</descriptorRef>
-                                </assembly>
-                            </build>
-                            <run>
-                                <kubernetesManifest>src/main/kubernetes/deployment.yaml</kubernetesManifest>
-                            </run>
-                        </image>
-                    </images>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>java:local</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>java:local</id>
+                        <goals>
+                            <goal>k8s:deploy</goal>
+                        </goals>
+                        <configuration>
+                            <manifest>src/main/kubernetes/deployment.yaml</manifest>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
