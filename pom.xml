@@ -14,6 +14,31 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>koester</groupId>
+                <artifactId>k8s_Docker_Java</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <configuration>
+                    <images>
+                        <image>
+<!--                            <name>${project.artifactId}:${project.version}</name>-->
+                            <name>java:local</name>
+                            <build>
+                                <from>openjdk:17-jdk-alpine</from>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                            </build>
+                            <run>
+                                <kubernetesManifest>src/main/kubernetes/deployment.yaml</kubernetesManifest>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
