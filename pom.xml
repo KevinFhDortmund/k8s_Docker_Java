@@ -29,7 +29,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>java:local</id>
+                        <id>TuermeVonHanoi</id>
                         <goals>
                             <goal>k8s:deploy</goal>
                         </goals>
