@@ -53,10 +53,15 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.38.0</version>
+                <plugin>
+                    <groupId>org.eclipse.jkube</groupId>
+                    <artifactId>kubernetes-maven-plugin</artifactId>
+                    <version>1.10.1</version>
+<!--                </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>io.fabric8</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>0.38.0</version>-->
                 <executions>
                     <execution>
                         <id>java:local</id>
@@ -67,12 +72,12 @@
                     </execution>
                     <execution>
                         <id>demo</id>
-<!--                        <goals>-->
-<!--                            <goal>k8s:deploy</goal>-->
-<!--                        </goals>-->
-                        <configuration>
-                            <manifest>src/main/kubernetes/deployment.yaml</manifest>
-                        </configuration>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+<!--                        <configuration>-->
+<!--                            <manifest>src/main/kubernetes/deployment.yaml</manifest>-->
+<!--                        </configuration>-->
                     </execution>
                 </executions>
             </plugin>
