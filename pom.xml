@@ -14,25 +14,34 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <groupId>org.eclipse.jkube</groupId>
-    <artifactId>jkube-maven-sample-zero-config</artifactId>
-    <version>1.10.1</version>
-    <packaging>jar</packaging>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId> (3)
-            </plugin>
-            <plugin>
                 <groupId>org.eclipse.jkube</groupId>
-                <artifactId>kubernetes-maven-plugin</artifactId> (4)
-                <version>1.10.1</version>
+                <artifactId>kubernetes-maven-plugin</artifactId>
+                <version>${jkube.kubernetes.version}</version>
             </plugin>
         </plugins>
     </build>
-</project>
+<!--    <groupId>org.eclipse.jkube</groupId>-->
+<!--    <artifactId>jkube-maven-sample-zero-config</artifactId>-->
+<!--    <version>1.10.1</version>-->
+<!--    <packaging>jar</packaging>-->
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId> (3)-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.eclipse.jkube</groupId>-->
+<!--                <artifactId>kubernetes-maven-plugin</artifactId> (4)-->
+<!--                <version>1.10.1</version>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+<!--</project>-->
 
 <!--    <build>-->
 <!--        <plugins>-->
