@@ -14,6 +14,26 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <groupId>org.eclipse.jkube</groupId>
+    <artifactId>jkube-maven-sample-zero-config</artifactId>
+    <version>1.10.1</version>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId> (3)
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>kubernetes-maven-plugin</artifactId> (4)
+                <version>1.10.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
 <!--    <build>-->
 <!--        <plugins>-->
 <!--            <plugin>-->
@@ -42,42 +62,42 @@
 <!--        </plugins>-->
 <!--    </build>-->
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>fabric8-maven-plugin</artifactId>
-                <version>4.4.2</version>
-                <configuration>
-                    <!-- Konfiguration für das Builden und Deployen in Docker -->
-                    <docker>
-                        <imageName>my-spring-boot-app</imageName>
-                        <imageTag>${project.version}</imageTag>
-                        <build>
-                            <contextDir>${project.basedir}</contextDir>
-                            <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>
-                            <skip>false</skip>
-                        </build>
-                    </docker>
-                    <!-- Konfiguration für das Deployen in Kubernetes -->
-                    <kubernetes>
-                        <name>my-spring-boot-app</name>
-                        <imagePullPolicy>IfNotPresent</imagePullPolicy>
-                        <generateName>false</generateName>
-                    </kubernetes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>fmp</id>
-                        <goals>
-                            <goal>resource</goal>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>io.fabric8</groupId>-->
+<!--                <artifactId>fabric8-maven-plugin</artifactId>-->
+<!--                <version>4.4.2</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Konfiguration für das Builden und Deployen in Docker &ndash;&gt;-->
+<!--                    <docker>-->
+<!--                        <imageName>my-spring-boot-app</imageName>-->
+<!--                        <imageTag>${project.version}</imageTag>-->
+<!--                        <build>-->
+<!--                            <contextDir>${project.basedir}</contextDir>-->
+<!--                            <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>-->
+<!--                            <skip>false</skip>-->
+<!--                        </build>-->
+<!--                    </docker>-->
+<!--                    &lt;!&ndash; Konfiguration für das Deployen in Kubernetes &ndash;&gt;-->
+<!--                    <kubernetes>-->
+<!--                        <name>my-spring-boot-app</name>-->
+<!--                        <imagePullPolicy>IfNotPresent</imagePullPolicy>-->
+<!--                        <generateName>false</generateName>-->
+<!--                    </kubernetes>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>fmp</id>-->
+<!--                        <goals>-->
+<!--                            <goal>resource</goal>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 
 </project>
