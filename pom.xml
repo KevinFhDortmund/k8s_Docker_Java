@@ -14,14 +14,14 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-<dependencies>
-    <dependency>
-        <groupId>io.fabric8</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>0.38.1</version>
-        <type>pom</type>
-    </dependency>
-</dependencies>
+<!--<dependencies>-->
+<!--    <dependency>-->
+<!--        <groupId>io.fabric8</groupId>-->
+<!--        <artifactId>docker-maven-plugin</artifactId>-->
+<!--        <version>0.38.1</version>-->
+<!--        <type>pom</type>-->
+<!--    </dependency>-->
+<!--</dependencies>-->
 <!--    <build>-->
 <!--        <plugins>-->
 <!--            <plugin>-->
@@ -51,38 +51,38 @@
 <!--    </build>-->
 <!--</project>-->
 
-    <build>
-        <plugins>
-                <plugin>
-                    <groupId>org.eclipse.jkube</groupId>
-                    <artifactId>kubernetes-maven-plugin</artifactId>
-                    <version>1.10.1</version>
-<!--                </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>io.fabric8</groupId>-->
-<!--                <artifactId>docker-maven-plugin</artifactId>-->
-<!--                <version>0.38.0</version>-->
-                <executions>
-                    <execution>
-                        <id>java:local</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>demo</id>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-<!--                        <configuration>-->
-<!--                            <manifest>src/main/kubernetes/deployment.yaml</manifest>-->
-<!--                        </configuration>-->
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--                <plugin>-->
+<!--                    <groupId>org.eclipse.jkube</groupId>-->
+<!--                    <artifactId>kubernetes-maven-plugin</artifactId>-->
+<!--                    <version>1.10.1</version>-->
+<!--&lt;!&ndash;                </plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <groupId>io.fabric8</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>docker-maven-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>0.38.0</version>&ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>java:local</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>demo</id>-->
+<!--                        <goals>-->
+<!--                            <goal>deploy</goal>-->
+<!--                        </goals>-->
+<!--&lt;!&ndash;                        <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <manifest>src/main/kubernetes/deployment.yaml</manifest>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </configuration>&ndash;&gt;-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 <!--    <build>-->
 <!--        <plugins>-->
