@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>koester</groupId>
-    <artifactId>k8s_Docker_Java</artifactId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>k8s_Docker_Java</name>
     <description>k8s_Docker_Java</description>
