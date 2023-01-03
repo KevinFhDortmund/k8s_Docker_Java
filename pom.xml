@@ -67,9 +67,9 @@
                     </execution>
                     <execution>
                         <id>demo</id>
-                        <goals>
-                            <goal>k8s:deploy</goal>
-                        </goals>
+<!--                        <goals>-->
+<!--                            <goal>k8s:deploy</goal>-->
+<!--                        </goals>-->
                         <configuration>
                             <manifest>src/main/kubernetes/deployment.yaml</manifest>
                         </configuration>
