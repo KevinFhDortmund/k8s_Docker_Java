@@ -14,32 +14,70 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>io.fabric8</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>0.38.1</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>java:local</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>TuermeVonHanoi</id>-->
+<!--                        <goals>-->
+<!--                            <goal>k8s:deploy</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <manifest>src/main/kubernetes/deployment.yaml</manifest>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+
     <build>
         <plugins>
             <plugin>
                 <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.38.0</version>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>4.4.2</version>
+                <configuration>
+                    <!-- Konfiguration für das Builden und Deployen in Docker -->
+                    <docker>
+                        <imageName>my-spring-boot-app</imageName>
+                        <imageTag>${project.version}</imageTag>
+                        <build>
+                            <contextDir>${project.basedir}</contextDir>
+                            <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>
+                            <skip>false</skip>
+                        </build>
+                    </docker>
+                    <!-- Konfiguration für das Deployen in Kubernetes -->
+                    <kubernetes>
+                        <name>my-spring-boot-app</name>
+                        <imagePullPolicy>IfNotPresent</imagePullPolicy>
+                        <generateName>false</generateName>
+                    </kubernetes>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>java:local</id>
-                        <phase>package</phase>
+                        <id>fmp</id>
                         <goals>
+                            <goal>resource</goal>
                             <goal>build</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>TuermeVonHanoi</id>
-                        <goals>
-                            <goal>k8s:deploy</goal>
-                        </goals>
-                        <configuration>
-                            <manifest>src/main/kubernetes/deployment.yaml</manifest>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
