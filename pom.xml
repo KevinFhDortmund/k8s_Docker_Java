@@ -47,11 +47,6 @@
                     </images>
 
                     <resources>
-                        <labels>
-                            <all>
-                                <group>quickstarts</group>
-                            </all>
-                        </labels>
 
                         <replicas>2</replicas>
                         <controllerName>${project.artifactId}</controllerName>
