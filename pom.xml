@@ -21,98 +21,78 @@
                 <groupId>org.eclipse.jkube</groupId>
                 <artifactId>kubernetes-maven-plugin</artifactId>
                 <version>1.10.1</version>
+
+                <configuration>
+                    <namespace>test-ns</namespace>
+                    <images>
+                        <image>
+                            <name>xml-config-demo:1.0.0</name>
+                            <!-- "alias" is used to correlate to the containers in the pod spec -->
+                            <alias>camel-app</alias>
+                            <build>
+                                <from>openjdk:21-jdk</from>
+                                <assembly>
+                                    <layers>
+                                        <layer>
+                                            <baseDirectory>/deployments</baseDirectory>
+                                        </layer>
+                                    </layers>
+                                </assembly>
+                                <env>
+                                    <JAVA_LIB_DIR>/deployments</JAVA_LIB_DIR>
+                                    <JAVA_MAIN_CLASS>koester.k8s_docker_java.K8sDockerJavaApplication</JAVA_MAIN_CLASS>
+                                </env>
+                            </build>
+                        </image>
+                    </images>
+
+                    <resources>
+                        <labels>
+                            <all>
+                                <group>quickstarts</group>
+                            </all>
+                        </labels>
+
+                        <replicas>2</replicas>
+                        <controllerName>${project.artifactId}</controllerName>
+
+                        <services>
+                            <service>
+                                <name>camel-service</name>
+                                <headless>true</headless>
+                            </service>
+                        </services>
+
+                        <serviceAccounts>
+                            <serviceAccount>
+                                <name>build-robot</name>
+                            </serviceAccount>
+                        </serviceAccounts>
+
+                        <annotations>
+                            <all>
+                                <version>${project.version}</version>
+                                <artifactId>${project.artifactId}</artifactId>
+                            </all>
+                            <deployment>
+                                <my>deployment</my>
+                            </deployment>
+                        </annotations>
+
+                        <configMap>
+                            <name>test</name>
+                            <entries>
+                                <entry>
+                                    <name>key1</name>
+                                    <value>value1</value>
+                                </entry>
+                            </entries>
+                        </configMap>
+                    </resources>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>
-<!--    -->
-<!--    <artifactId>jkube-maven-sample-zero-config</artifactId>-->
-<!--    <version>1.10.1</version>-->
-<!--    <packaging>jar</packaging>-->
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId> (3)-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.eclipse.jkube</groupId>-->
-<!--                <artifactId>kubernetes-maven-plugin</artifactId> (4)-->
-<!--                <version>1.10.1</version>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-<!--</project>-->
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.eclipse.jkube</groupId>-->
-<!--                    <artifactId>kubernetes-maven-plugin</artifactId>-->
-<!--                    <version>1.10.1</version>-->
-<!--&lt;!&ndash;                </plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;                <groupId>io.fabric8</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                <artifactId>docker-maven-plugin</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                <version>0.38.0</version>&ndash;&gt;-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>java:local</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>build</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                    <execution>-->
-<!--                        <id>demo</id>-->
-<!--                        <goals>-->
-<!--                            <goal>deploy</goal>-->
-<!--                        </goals>-->
-<!--&lt;!&ndash;                        <configuration>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <manifest>src/main/kubernetes/deployment.yaml</manifest>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </configuration>&ndash;&gt;-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>io.fabric8</groupId>-->
-<!--                <artifactId>fabric8-maven-plugin</artifactId>-->
-<!--                <version>4.4.2</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; Konfiguration für das Builden und Deployen in Docker &ndash;&gt;-->
-<!--                    <docker>-->
-<!--                        <imageName>my-spring-boot-app</imageName>-->
-<!--                        <imageTag>${project.version}</imageTag>-->
-<!--                        <build>-->
-<!--                            <contextDir>${project.basedir}</contextDir>-->
-<!--                            <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>-->
-<!--                            <skip>false</skip>-->
-<!--                        </build>-->
-<!--                    </docker>-->
-<!--                    &lt;!&ndash; Konfiguration für das Deployen in Kubernetes &ndash;&gt;-->
-<!--                    <kubernetes>-->
-<!--                        <name>my-spring-boot-app</name>-->
-<!--                        <imagePullPolicy>IfNotPresent</imagePullPolicy>-->
-<!--                        <generateName>false</generateName>-->
-<!--                    </kubernetes>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>fmp</id>-->
-<!--                        <goals>-->
-<!--                            <goal>resource</goal>-->
-<!--                            <goal>build</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-
 
 </project>
