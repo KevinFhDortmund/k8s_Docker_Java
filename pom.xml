@@ -28,7 +28,7 @@
                         <image>
                             <name>xml-config-demo:1.0.0</name>
                             <!-- "alias" is used to correlate to the containers in the pod spec -->
-                            <alias>camel-app</alias>
+                            <alias>demo</alias>
                             <build>
                                 <from>openjdk:21-jdk</from>
                                 <assembly>
