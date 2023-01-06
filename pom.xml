@@ -23,7 +23,7 @@
                 <version>1.10.1</version>
 
                 <configuration>
-                    <namespace>demo</namespace>
+                    <namespace>default</namespace>
                     <images>
                         <image>
                             <name>xml-config-demo:1.0.0</name>
