@@ -88,6 +88,10 @@
                                 </entry>
                             </entries>
                         </configMap>
+
+                        <remotes> (15)
+                            <remote>src/main/java/kubernetes/deployment.yaml</remote>
+                        </remotes>
                     </resources>
                 </configuration>
 
