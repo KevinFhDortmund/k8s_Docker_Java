@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -7,7 +7,6 @@
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>k8s_Docker_Java</name>
-    <packaging>jar</packaging>
     <description>k8s_Docker_Java</description>
 
     <properties>
@@ -15,29 +14,85 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId> (1)
-        <version>1.5.10.RELEASE</version>
-    </parent>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId> (2)
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId> (3)
-            </plugin>
-            <plugin>
                 <groupId>org.eclipse.jkube</groupId>
-                <artifactId>kubernetes-maven-plugin</artifactId> (4)
+                <artifactId>kubernetes-maven-plugin</artifactId>
                 <version>1.10.1</version>
+
+                <configuration>
+                    <namespace>default</namespace>
+                    <images>
+                        <image>
+                            <name>xml-config-demo:1.0.0</name>
+                            <!-- "alias" is used to correlate to the containers in the pod spec -->
+                            <alias>demo</alias>
+                            <build>
+                                <from>openjdk:21-jdk</from>
+                                <assembly>
+                                    <layers>
+                                        <layer>
+                                            <baseDirectory>/deployments</baseDirectory>
+                                        </layer>
+                                    </layers>
+                                </assembly>
+                                <env>
+                                    <JAVA_LIB_DIR>/deployments</JAVA_LIB_DIR>
+                                    <JAVA_MAIN_CLASS>koester.k8s_docker_java.K8sDockerJavaApplication</JAVA_MAIN_CLASS>
+                                </env>
+                            </build>
+                        </image>
+                    </images>
+
+                    <resources>
+                        <labels>
+                            <all>
+                                <group>demo</group>
+                            </all>
+                        </labels>
+
+                        <replicas>2</replicas>
+                        <controllerName>${project.artifactId}</controllerName>
+
+                        <services>
+                            <service>
+                                <name>camel-service</name>
+                                <headless>true</headless>
+                            </service>
+                        </services>
+
+                        <serviceAccounts>
+                            <serviceAccount>
+                                <name>build-robot</name>
+                            </serviceAccount>
+                        </serviceAccounts>
+
+                        <annotations>
+                            <all>
+                                <version>${project.version}</version>
+                                <artifactId>${project.artifactId}</artifactId>
+                            </all>
+                            <deployment>
+                                <my>deployment</my>
+                            </deployment>
+                        </annotations>
+
+                        <configMap>
+                            <name>test</name>
+                            <entries>
+                                <entry>
+                                    <name>key1</name>
+                                    <value>value1</value>
+                                </entry>
+                            </entries>
+                        </configMap>
+                    </resources>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>
+
 </project>
