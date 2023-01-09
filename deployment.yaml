@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - image: tuerme-von-hanoi:local
-            name: java
+#            name: java
             imagePullPolicy: Never
             resources: { }
             volumeMounts:
