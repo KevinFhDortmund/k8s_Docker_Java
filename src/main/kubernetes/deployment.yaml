@@ -18,8 +18,8 @@ spec:
         app: demo
     spec:
       containers:
-        - image: tuerme-von-hanoi:local
-            name: tuerme-von-hanoi
+        - image: java:local
+            name: java
             imagePullPolicy: Never
             resources: { }
             volumeMounts:
