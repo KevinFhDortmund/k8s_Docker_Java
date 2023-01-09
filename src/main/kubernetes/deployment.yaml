@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: demo
-  name: demo
+    app: tuerme-von-hanoi
+  name: tuerme-von-hanoi
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: demo
+      app: tuerme-von-hanoi
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: demo
+        app: tuerme-von-hanoi
     spec:
       containers:
-        - image: java:local
-            name: java
+        - image: tuerme-von-hanoi:local
+            name: tuerme-von-hanoi
             imagePullPolicy: Never
             resources: { }
             volumeMounts:
