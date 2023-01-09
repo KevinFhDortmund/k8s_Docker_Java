@@ -29,7 +29,7 @@ spec:
               - name: test-volume
                 hostPath:
                   # directory location on host
-                  path: /home/kevin/stacks/kevin/javatest/data
+                  path: /home/kevin/data
                   # this field is optional
                   type: Directory
         status: { }
