@@ -19,12 +19,12 @@ spec:
     spec:
       containers:
         - image: tuerme-von-hanoi:local
-#            name: java
+            name: java
             imagePullPolicy: Never
             resources: { }
-            volumeMounts:
-              - mountPath: /test-pd
-                name: test-volume
+#            volumeMounts:
+#              - mountPath: /test-pd
+#                name: test-volume
             volumes:
               - name: test-volume
                 hostPath:
