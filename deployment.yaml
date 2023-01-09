@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: tuerme-von-hanoi
-  name: tuerme-von-hanoi
+    app: demo
+  name: demo
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: tuerme-von-hanoi
+      app: demo
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: tuerme-von-hanoi
+        app: demo
     spec:
       containers:
-        - image: tuerme-von-hanoi:local
-            name: tuerme-von-hanoi
+        - image: java:local
+            name: java
             imagePullPolicy: Never
             resources: { }
             volumeMounts:
@@ -29,10 +29,8 @@ spec:
               - name: test-volume
                 hostPath:
                   # directory location on host
-                  path: /home/kevin/data
+                  path: /home/kevin/stacks/kevin/javatest/data
                   # this field is optional
                   type: Directory
         status: { }
-
-
 
