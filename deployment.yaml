@@ -18,7 +18,7 @@ spec:
         app: demo
     spec:
       containers:
-        - image: java:local
+        - image: tuerme-von-hanoi:local
             name: java
             imagePullPolicy: Never
             resources: { }
