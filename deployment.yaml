@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: demo
-  strategy: {}
+  strategy: { }
   template:
     metadata:
       creationTimestamp: null
@@ -19,18 +19,18 @@ spec:
     spec:
       containers:
         - image: tuerme-von-hanoi:local
-            name: test
-            imagePullPolicy: Never
-            resources: { }
-            volumeMounts:
-              - mountPath: /test-pd
-                name: test-volume
-            volumes:
-              - name: test-volume
-                hostPath:
-                  # directory location on host
-                  path: /home/kevin/data
-                  # this field is optional
-                  type: Directory
+        name: test
+        imagePullPolicy: Never
+        resources: { }
+        volumeMounts:
+          - mountPath: /test-pd
+            name: test-volume
+          volumes:
+            - name: test-volume
+              hostPath:
+                # directory location on host
+                path: /home/kevin/data
+                # this field is optional
+                type: Directory
         status: { }
 
