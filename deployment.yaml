@@ -19,17 +19,17 @@ spec:
     spec:
       containers:
         - image: java:local
-            name: java
-            imagePullPolicy: Never
-            resources: { }
-            volumeMounts:
-              - mountPath: /test-pd
-                name: test-volume
-            volumes:
-              - name: test-volume
-                hostPath:
-                  # directory location on host
-                  path: /home/kevin/data
-                  # this field is optional
-                  type: Directory
+          name: java
+          imagePullPolicy: Never
+          resources: { }
+          volumeMounts:
+            - mountPath: /test-pd
+              name: test-volume
+          volumes:
+            - name: test-volume
+              hostPath:
+              # directory location on host
+              path: /home/kevin/data
+              # this field is optional
+              type: Directory
       status: { }
