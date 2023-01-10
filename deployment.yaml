@@ -32,4 +32,3 @@ spec:
               path: /home/kevin/data
               # this field is optional
               type: Directory
-      status: { }
