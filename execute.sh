@@ -9,4 +9,4 @@ microk8s ctr image import tuerme-von-hanoi.tar
 
 microk8s kubectl apply -f deployment.yaml
 
-microk8s kubectl rollout restart deploy demo
+#microk8s kubectl rollout restart deploy demo
