@@ -18,13 +18,13 @@ spec:
         app: demo
     spec:
       containers:
-        - image: tuermeVonHanoi:local
-        name: test
-        imagePullPolicy: Never
-        resources: { }
-        volumeMounts:
-          - mountPath: /test-pd
-            name: test-volume
+      - image: tuermeVonHanoi:local
+      name: test
+      imagePullPolicy: Never
+      resources: { }
+      volumeMounts:
+      - mountPath: /test-pd
+        name: test-volume
           volumes:
             - name: test-volume
               hostPath:
